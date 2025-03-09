@@ -45,7 +45,7 @@ public:
         is_visited[0] = true;
         while(!WFS_queue.empty())
         {
-            int curr_vert = WFS_queue.back();
+            int curr_vert = WFS_queue.front();
             WFS_queue.pop();
             for(auto i = vertices[curr_vert].begin(); i!=vertices[curr_vert].end(); i++)
             {
