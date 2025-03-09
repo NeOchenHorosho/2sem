@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstring>
 #include <set>
+#include <stack>
 using namespace std;
 template <class T>
 class mqueue
@@ -192,6 +193,11 @@ int main()
     bili.insert(just_point(pperson_position->x, pperson_position->y));
     while(true)
     {
+        if(steps.is_empty())
+        {
+            cout << "\n\n There's no treasure";
+            return 0;
+        }
         tempx = steps.top()->x;
         tempy = steps.top()->y;
         if(tempx ==treasurex && tempy == treasurey)
@@ -243,10 +249,16 @@ int main()
 
     cout << "\nThe shortest pass:\n\n";
     ppoint* temppoint = steps.top();
+    stack<just_point> result;
     while(temppoint != nullptr)
     {
-        cout << "\nx: " << temppoint->x << "\ty: " << temppoint->y;
+        result.push(just_point(temppoint->x, temppoint->y));
         temppoint = temppoint->prev_point;
+    }
+    while(!result.empty())
+    {
+        cout << "\nx: " << result.top().x << "\ty: " << result.top().y;
+        result.pop();
     }
     return 0;
 }
