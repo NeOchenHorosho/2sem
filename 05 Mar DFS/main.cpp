@@ -54,6 +54,7 @@ public:
                 WFS_queue.push(*i);
                 cout << *i +1<< " ";
             } 
+            is_visited[curr_vert]=true;
             cout << '\n';
         }
         for(int i = 0; i < size; i++)
