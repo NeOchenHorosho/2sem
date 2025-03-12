@@ -67,14 +67,9 @@ public:
 
     while (!DFS_stack.empty()) {
         int curr = DFS_stack.top();
-        DFS_stack.pop();  // Снимаем вершину со стека (а не внутри цикла по соседям!)
-
-        // Добавляем вершину в результат (если нужно — можно было добавить при push)
+        DFS_stack.pop();
         result.insert(curr+1);
-
-        // Перебираем всех соседей curr
         for (int neighbor : vertices[curr]) {
-            // Если сосед ещё не посещён
             if (!is_visited[neighbor]) {
                 is_visited[neighbor] = true;
                 DFS_stack.push(neighbor);
