@@ -20,24 +20,26 @@ private:
         }
     };
     Node* top_pointer;
-    Node* bottom_pointer;
-
 public:
-    MyStack()
+    MyStack() : top_pointer(nullptr){}
+    MyStack(MyStack& source)
     {
-        top_pointer = nullptr;
-        bottom_pointer = nullptr;
+        MyStack tmp;
+        Node* pointer = source.top_pointer;
+        while(pointer != nullptr)
+        {
+            tmp.push(pointer->NodeData);
+            pointer = pointer->prev;
+        }
+        while(!tmp.empty())
+        {
+            this->push(tmp.top());
+            tmp.pop();
+        }
     }
     void push(T Data)
     {
-        if(bottom_pointer != nullptr)
-        {
-            top_pointer = new Node(Data, top_pointer);
-        }
-        else
-        {
-            bottom_pointer = top_pointer = new Node(Data, top_pointer);
-        }
+        top_pointer = new Node(Data, top_pointer);
     }
     T& top()
     {
@@ -45,12 +47,34 @@ public:
     }
     void pop()
     {
-        Node* tmp = top_pointer;
-        top_pointer = top_pointer->prev;
-        delete top_pointer;
+        if(top_pointer != nullptr)
+        {
+            Node* tmp = top_pointer;
+            top_pointer = top_pointer->prev;
+            delete tmp;
+        }
+    }
+    bool empty()
+    {
+        if(top_pointer!= nullptr)
+            return true;
+        return false;
     }
 };
 int main()
 {
+    MyStack<int> haha;
+    haha.push(1);
+    haha.push(2);
+    haha.push(3);
 
+    MyStack<int> zabava(haha);
+    cout << "\n\n\n";
+    while(!zabava.empty())
+    {
+        
+        cout << zabava.top() << '\t';
+        zabava.pop();
+    }
+    return 0;
 }

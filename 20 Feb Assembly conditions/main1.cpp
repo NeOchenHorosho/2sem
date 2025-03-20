@@ -4,7 +4,7 @@ using namespace std;
 int main() {
     int x, m, y, n, k, p, r;
     cin >> x >> m >> y >> n >> k >> p >> r;  
-
+    int res;
     int totalCost = 0;   
     int totalMoney = 0;  
 
@@ -16,7 +16,7 @@ int main() {
         "imul ebx, %[n]\n\t"         
         "add eax, ebx\n\t"           
         "add eax, %[k]\n\t"          
-        "mov %[totalCost], eax\n\t"       
+        "mov edx, eax\n\t"       
 
         // Расчёт имеющихся денег (p*1000 + r*500)
         "mov eax, %[p]\n\t"          
@@ -24,11 +24,14 @@ int main() {
         "mov ebx, %[r]\n\t"          
         "imul ebx, 500\n\t"          
         "add eax, ebx\n\t"           
-        "mov %[totalMoney], eax\n\t"      
-
+        "cmp eax, edx\n\t"
+        "mov %[res], 0\n\t"
+        "jl haha\n\t"
+        "mov %[res], 1\n\t"
+        "haha:\n\t"
+        ".att_syntax prefix;"
         :
-        [totalCost]"=r"(totalCost),
-        [totalMoney]"=r"(totalMoney)
+        [res]"=r"(res)
         :
         [x]"r"(x),
         [m]"r"(m),
@@ -37,13 +40,8 @@ int main() {
         [k]"r"(k),
         [p]"r"(p),
         [r]"r"(r)
-        : "eax", "ebx"
+        : "eax", "ebx", "edx"
     );
-    if (totalMoney >= totalCost) {
-        cout << "Yes\n";
-    } else {
-        cout << "No\n";
-    }
-
+    cout << '\n' << (res ? "priamougolni" : "ne priamougolni");
     return 0;
 }
