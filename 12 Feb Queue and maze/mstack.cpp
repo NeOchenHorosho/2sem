@@ -24,6 +24,7 @@ public:
     MyStack() : top_pointer(nullptr){}
     MyStack(MyStack& source)
     {
+        top_pointer = nullptr;
         MyStack tmp;
         Node* pointer = source.top_pointer;
         while(pointer != nullptr)
@@ -36,6 +37,39 @@ public:
             this->push(tmp.top());
             tmp.pop();
         }
+    }
+    MyStack& operator=(MyStack& right)
+    {
+        while (top_pointer != nullptr)
+        {
+            Node* temp = top_pointer;
+            top_pointer = top_pointer->prev;
+            delete temp;
+        }
+        MyStack tmp;
+        Node* pointer = right.top_pointer;
+        while(pointer != nullptr)
+        {
+            tmp.push(pointer->NodeData);
+            pointer = pointer->prev;
+        }
+        while(!tmp.empty())
+        {
+            this->push(tmp.top());
+            tmp.pop();
+        }
+        return *this;
+    }
+    MyStack& operator=(MyStack&& right)
+    {
+        Node* tmp = right.top_pointer;
+        right.top_pointer = top_pointer;
+        top_pointer = tmp;
+        return *this;
+    }
+    MyStack(T ogo)
+    {
+        top_pointer = new Node(ogo);
     }
     void push(T Data)
     {
@@ -56,9 +90,18 @@ public:
     }
     bool empty()
     {
-        if(top_pointer!= nullptr)
+        if(top_pointer== nullptr)
             return true;
         return false;
+    }
+    ~MyStack()
+    {
+        while (top_pointer != nullptr)
+        {
+            Node* temp = top_pointer;
+            top_pointer = top_pointer->prev;
+            delete temp;
+        }
     }
 };
 int main()
@@ -67,8 +110,10 @@ int main()
     haha.push(1);
     haha.push(2);
     haha.push(3);
-
     MyStack<int> zabava(haha);
+    zabava = haha;
+    haha.pop();
+    haha.pop();
     cout << "\n\n\n";
     while(!zabava.empty())
     {
