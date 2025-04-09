@@ -16,7 +16,7 @@ int main()
             ".intel_syntax noprefix\n"
             "mov esi, %0\n"         // ESI <- A
             "mov edi, %1\n"         // EDI <- B
-            "mov ecx, %2\n"         // ECX <- msize
+            "mov ecx, %2\n"         // ECX <- msizeэээээээээээээээээээ
             "mov ebx, [esi]\n"
             "mov [edi], ebx\n"
             "mov ebx, [esi + 4]\n"

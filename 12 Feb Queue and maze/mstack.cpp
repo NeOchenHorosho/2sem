@@ -22,7 +22,7 @@ private:
     Node* top_pointer;
 public:
     MyStack() : top_pointer(nullptr){}
-    MyStack(MyStack& source)
+    MyStack(const MyStack& source)
     {
         top_pointer = nullptr;
         MyStack tmp;
@@ -38,7 +38,7 @@ public:
             tmp.pop();
         }
     }
-    MyStack& operator=(MyStack& right)
+    MyStack& operator=(const MyStack& right)
     {
         while (top_pointer != nullptr)
         {
@@ -94,6 +94,9 @@ public:
             return true;
         return false;
     }
+    void show()
+    {
+    };
     ~MyStack()
     {
         while (top_pointer != nullptr)
