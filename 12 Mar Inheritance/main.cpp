@@ -121,7 +121,7 @@ public:
 		if (is_empty())
 		{
 			cout << "Stack is empty\n";
-            return;
+            throw "Stack is empty";
 		}
 		return M[top];
 	}
@@ -274,7 +274,7 @@ public:
 		if (is_empty())
 		{
 			cout << "Queue is empty\n";
-            return;
+            throw "Stack is empty";
 		}
 		return p[head];
 	}
@@ -283,7 +283,7 @@ public:
 		if (is_empty())
 		{
 			cout << "Queue is empty\n";
-            return;
+            throw "Stack is empty";
 		}
 		return p[(tail - 1 + size) % size];
 	}
@@ -429,7 +429,7 @@ public:
 		if (head == nullptr)
 		{
 			cout << "Queue is empty\n";
-            return;
+            throw "Stack is empty";
 		}
 		return head->info;
 	}
@@ -439,7 +439,7 @@ public:
 		if (tail == nullptr)
 		{
 			cout << "Queue is empty\n";
-            return;
+            throw "Stack is empty";
 		}
 		return tail->info;
 	}
@@ -583,7 +583,7 @@ public:
 		if (head == nullptr)
 		{
 			cout << "Queue is empty\n";
-            return;
+            throw "Stack is empty";
 		}
 		return head->info;
 	}
@@ -670,7 +670,7 @@ public:
 		if (!in_range())
 		{
 			cout << "Iterator out of range\n";
-            return;
+            throw "Stack is empty";
 		}
 		return a.M[pos];
 	}
@@ -711,7 +711,7 @@ public:
 		if (!in_range())
 		{
 			cout << "Iterator out of range\n";
-            return;
+            throw "Stack is empty";
 		}
 		return a.p[pos];
 	}
@@ -746,7 +746,7 @@ public:
 		if (!in_range())
 		{
 			cout << "Iterator out of range\n";
-            return;
+            throw "Stack is empty";
 		}
 		return current->info;
 	}
@@ -785,7 +785,7 @@ public:
 		if (!in_range())
 		{
 			cout << "Iterator out of range\n";
-            return;
+            throw "Stack is empty";
 		}
 		return current->info;
 	}
