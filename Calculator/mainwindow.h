@@ -18,8 +18,13 @@ public:
     ~MainWindow();
 
 private slots:
+    void on_PluspushButton_clicked();
 
-    void on_CalculateButton_clicked();
+    void on_MinuspushButton_clicked();
+
+    void on_MultiplypushButton_clicked();
+
+    void on_DividepushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
