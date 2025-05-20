@@ -802,13 +802,13 @@ public:
 
 int main()
 {
-	ArrayQueue haha;
-	AbstractQueue &haha_ref = haha;
+	ArrayStack haha;
+	AbstractStack &haha_ref = haha;
 	for (int i = 0; i < 10; i++)
 	{
 		haha_ref.push(i);
 	}
-	ArrayQueueIterator iter(haha);
+	ArrayStackIterator iter(haha);
 	AbstractIterator &iter_ref = iter;
 	while (iter_ref.in_range())
 	{

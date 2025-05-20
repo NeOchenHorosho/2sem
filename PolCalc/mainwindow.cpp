@@ -14,7 +14,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_InpField_textChanged()
+
+
+void MainWindow::on_CalculateButton_clicked()
 {
 
 }

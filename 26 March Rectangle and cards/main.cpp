@@ -49,9 +49,9 @@ int main()
 {
     MyRectangle a(0,2,0,3);
     cout << "\nrectangle area: " << a.area() << "\nrectangle perimeter: " << a.perimeter();
-    MyTriangle b(0,1,0,4);
+    MyTriangle b(0,2,0,3);
     cout << "\n\ntriangle area: " << b.area() << "\ntriangle perimeter: " << b.perimeter();
-    MyRhombus c(0,3,0,1);
+    MyRhombus c(0,2,0,3);
     cout << "\n\nRhombus area: " << c.area() << "\nRhombus perimeter: " << c.perimeter();
     MyRectangle& rb = b;
     cout << "\n\ntriangle of rectangle area: " << rb.area() << "\ntriangle of rectangle perimeter: " << rb.perimeter();
