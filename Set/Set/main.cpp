@@ -253,7 +253,8 @@ public:
         {
             in >> x.a[i];
         }
-        std::sort(x.a, x.a + x.n, [](const T& a, const T& b) { return a < b; });
+        //сортировка для выполнения операций
+        std::sort(x.a, x.a + x.n);
         return in;
     }
     friend QDataStream & operator<<(QDataStream& out, const mset<T>& x)
